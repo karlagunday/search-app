@@ -23,7 +23,11 @@ export const SEARCH_RESULTS = gql`
             firstName
             lastName
             properties {
-              city
+                street
+                city
+                state
+                zip
+                rent
             }
           }
           properties {
