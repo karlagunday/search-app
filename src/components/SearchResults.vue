@@ -2,11 +2,11 @@
   <section class="search-form">
     <input v-model="searchInput" placeholder="Search.." type="search" />
     <article v-if="search" class="results">
-      <article class="result user">
+      <article class="user">
         <h2>Users</h2>
         <UserList :users="search.users"/>
       </article>
-      <article class="result user">
+      <article class="user">
         <h2>Properties</h2>
         <PropertyList :properties="search.properties"/>
       </article>    
@@ -42,4 +42,9 @@ export default {
 </script>
 
 <style scoped>
+  .results {
+    display:grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+  }
 </style>

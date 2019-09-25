@@ -1,10 +1,8 @@
 <template>
     <section>
-        <ul class="list">
-            <li :key="property.id" v-for="property in properties" >
-            {{property.street}} {{property.city}} {{property.state}} {{property.zip}} {{property.rent}}
-            </li>
-        </ul>
+        <b-list-group class="list" :key="property.id" v-for="property in properties" >
+            <b-list-group-item>{{property.street}} {{property.city}} {{property.state}} {{property.zip}} {{property.rent}}</b-list-group-item>            
+        </b-list-group>
     </section>
 </template>
 
@@ -16,3 +14,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .list {
+        text-align: left;
+    }
+</style>

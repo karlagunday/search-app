@@ -1,12 +1,17 @@
 <template>
     <section>
-        <ul class="list">
-          <li :key="user.id" v-for="user in users" >
-            {{user.firstName}} {{user.lastName}}
-            <h3>Properties</h3>
-            <PropertyList :properties="user.properties"/>
-          </li>
-        </ul>
+        <b-card-group deck :key="user.id" v-for="user in users" >
+            <b-card
+                class="header"
+                header-tag="header"
+            >
+                <template v-slot:header>
+                    {{ user.firstName }} {{ user.lastName }} 
+                    <b-badge variant="success">{{ user.properties.length }}</b-badge>
+                </template>                
+                <PropertyList :properties="user.properties"/>
+            </b-card>
+        </b-card-group>
     </section>
 </template>
 
@@ -22,3 +27,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .header {
+        text-align: left;
+    }
+</style>
