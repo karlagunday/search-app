@@ -1,14 +1,16 @@
 <template>
   <section class="search-form">
-    <input v-model="searchInput" placeholder="Search.." type="search" />
-    <article v-if="search" class="results">
-      <article class="user">
+    <section class="search-wrapper">
+      <b-form-input type="search" id="search" v-model="searchInput" placeholder="Search.."></b-form-input>
+    </section>
+    <article class="results">
+      <article class="result user">
         <h2>Users</h2>
-        <UserList :users="search.users"/>
+        <UserList  v-if="search" :users="search.users"/>
       </article>
-      <article class="user">
+      <article class="result user">
         <h2>Properties</h2>
-        <PropertyList :properties="search.properties"/>
+        <PropertyList  v-if="search" :properties="search.properties"/>
       </article>    
     </article>
   </section>
@@ -42,9 +44,19 @@ export default {
 </script>
 
 <style scoped>
+  .search-form {
+    padding: 60px;
+  }
   .results {
     display:grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+  }
+  .search-wrapper {
+    margin: 40px 0;
+  }
+  #search {
+    width: 300px;
+    margin: 0 auto;
   }
 </style>

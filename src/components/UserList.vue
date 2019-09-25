@@ -1,13 +1,16 @@
 <template>
     <section>
-        <b-card-group deck :key="user.id" v-for="user in users" >
+        <b-card-group class="card-group" deck :key="user.id" v-for="user in users" >
             <b-card
-                class="header"
+                class="card"
                 header-tag="header"
+                border-variant="success"
+                header-bg-variant="success"
+                header-text-variant="white"
             >
                 <template v-slot:header>
                     {{ user.firstName }} {{ user.lastName }} 
-                    <b-badge variant="success">{{ user.properties.length }}</b-badge>
+                    <b-badge variant="light">{{ user.properties.length }}</b-badge>
                 </template>                
                 <PropertyList :properties="user.properties"/>
             </b-card>
@@ -29,7 +32,10 @@ export default {
 </script>
 
 <style scoped>
-    .header {
+    .card {
         text-align: left;
+    }
+    .card-group:not(:last-child) {
+        margin-bottom: 20px;
     }
 </style>
