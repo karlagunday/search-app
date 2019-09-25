@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
   .search-form {
-    padding: 60px;
+    padding: 20px 60px;
   }
   .results {
     display:grid;
@@ -56,7 +56,9 @@ export default {
     margin: 40px 0;
   }
   #search {
-    width: 300px;
+    width: 600px;
+    height: 60px;
+    font-size: 40px;
     margin: 0 auto;
   }
 </style>

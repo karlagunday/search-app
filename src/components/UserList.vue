@@ -11,7 +11,7 @@
                 <template v-slot:header>
                     {{ user.firstName }} {{ user.lastName }} 
                     <b-badge variant="light">{{ user.properties.length }}</b-badge>
-                </template>                
+                </template>
                 <PropertyList :properties="user.properties"/>
             </b-card>
         </b-card-group>
