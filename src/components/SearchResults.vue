@@ -4,36 +4,28 @@
     <article v-if="search" class="results">
       <article class="result user">
         <h2>Users</h2>
-        <ul class="list">
-          <li :key="user.id" v-for="user in search.users" >
-            {{user.firstName}} {{user.lastName}}
-            <h3>Properties</h3>
-            <ul class="list">
-              <li :key="property.id" v-for="property in user.properties" >
-                {{property.street}} {{property.city}} {{property.state}} {{property.zip}} {{property.rent}}
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <UserList :users="search.users"/>
       </article>
       <article class="result user">
         <h2>Properties</h2>
-        <ul class="list">
-          <li :key="property.id" v-for="property in search.properties" >
-            {{property.street}} {{property.city}} {{property.state}} {{property.zip}} {{property.rent}}
-          </li>
-        </ul>
+        <PropertyList :properties="search.properties"/>
       </article>    
     </article>
   </section>
 </template>
 
 <script>
-import { SEARCH_RESULTS, GET_USERS } from "../queries.js";
+import { SEARCH_RESULTS } from "../queries.js";
+import PropertyList from "./PropertyList";
+import UserList from "./UserList";
 export default {
+  components: {
+    PropertyList,
+    UserList
+  },
   data () {
     return {
-      searchInput: '',
+      searchInput: ''
     }
   },
   apollo: {
