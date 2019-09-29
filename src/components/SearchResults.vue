@@ -1,7 +1,8 @@
 <template>
   <section class="search-form">
     <section class="search-wrapper">
-      <b-form-input type="search" id="search" v-model="searchInput" placeholder="Search.."></b-form-input>
+      <b-form-input type="search" id="search" v-model="searchQuery" placeholder="What are you looking for?" />
+      <b-button class="btn search" @click="doSearch(searchQuery)" variant="success">Search</b-button>
     </section>
     <article class="results">
       <article class="result user">
@@ -27,7 +28,7 @@ export default {
   },
   data () {
     return {
-      searchInput: ''
+      searchQuery: ''
     }
   },
   apollo: {
@@ -35,9 +36,16 @@ export default {
       query: SEARCH_RESULTS,
       variables () {
         return {
-          input: this.searchInput
+          input: ''
         }
       }
+    }
+  },
+  methods: {
+     async doSearch(str) {
+     return await this.$apollo.queries.search.refetch({
+       input: str
+     });
     }
   }
 };
@@ -51,14 +59,21 @@ export default {
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+    margin-top: 30px;
   }
   .search-wrapper {
-    margin: 40px 0;
+    width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 20px;
   }
   #search {
-    width: 600px;
+    width: 100%;
     height: 60px;
     font-size: 40px;
-    margin: 0 auto;
+  }
+  .btn.search {
+    display: inline-block;
   }
 </style>
