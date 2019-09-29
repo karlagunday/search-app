@@ -1,6 +1,7 @@
 <template>
   <section class="search-form">
     <section class="search-wrapper">
+      <!-- @TODO - add loading feedback -->
       <vue-autosuggest
           type="search"
           id="search"
@@ -12,6 +13,7 @@
             placeholder:'What are you looking for?'
           }"
           @input="getSuggestions"
+          @selected="doSearch"
           v-on:keyup.enter="doSearch"
       >  
         <template slot-scope="{suggestion}">
