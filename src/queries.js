@@ -41,6 +41,14 @@ export const SEARCH_RESULTS = gql`
     }
 `;
 
+export const AUTOSUGGEST = gql`
+    query AutosuggestResult ($input: String!) {
+        autosuggest(query: $input) {
+          users
+        }
+    }
+`;
+
 export const ADD_USER = gql`
     mutation addUser($firstName: String!, $lastName: String!) {
         createUser(firstName: $firstName, lastName: $lastName) {
